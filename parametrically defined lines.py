@@ -1,44 +1,17 @@
 from PIL import Image, ImageColor, ImageDraw
-image = Image.new("RGB", (1200, 800))
+image = Image.new("RGB", (1200, 800)) # создание изображения
 draw = ImageDraw.Draw(image)
-draw.rectangle((0, 0, 1200, 800), fill=ImageColor.getrgb("white"))
+draw.rectangle((0, 0, 1200, 800), fill=ImageColor.getrgb("white")) # белый экран
+draw.line(((600,0,600,800)), fill=ImageColor.getrgb("grey"))
+draw.line(((0,400,1200,400)), fill=ImageColor.getrgb("grey"))
+draw.line(((595,5,600,0)), fill=ImageColor.getrgb("grey"))
+draw.line(((600,0,605,5)), fill=ImageColor.getrgb("grey"))
+draw.line(((1195,395,1200,400)), fill=ImageColor.getrgb("grey"))
+draw.line(((1200,400,1195,405)), fill=ImageColor.getrgb("grey"))
+
+
 def line_f(x):
     return k*x+b
-while True:
-    k= int(input("Введите k:  "))
-    b= int(input("Введите b:  "))
-    class Point:
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
-    start_x = -4
-    end_x = 4
-    start_y = -15
-    end_y = 15
-    points = []
-    x = start_x
-    step_x = 0.1
-    while x <= end_x:
-        y = line_f(x)
-        points.append(Point(x, y))
-        x += step_x
-    def convert(point):
-        scale_x = 1200 / (end_x - start_x)
-        scale_y = 800 / (end_y - start_y)
-        local_x = point.x * scale_x
-        local_y = point.y * scale_y
-        local_x = (-start_x * scale_x) + local_x
-        local_y = (-start_y * scale_y) + local_y
-        return Point(local_x, 800 - local_y)
-    start_hor = convert(Point(start_x, 0))
-    end_hor = convert(Point(end_x, 0))
-    draw.line((start_hor.x, start_hor.y, end_hor.x, end_hor.y), fill=ImageColor.getrgb("grey"))
-    start_ver = convert(Point(0, start_y))
-    end_ver = convert(Point(0, end_y))
-    draw.line((start_ver.x, start_ver.y, end_ver.x, end_ver.y), fill=ImageColor.getrgb("grey"))
-    last_point = convert(points[0])
-    for point in points:
-        current_point = convert(point)
-        draw.line((last_point.x, last_point.y, current_point.x, current_point.y), fill=ImageColor.getrgb("blue"))
-        last_point = current_point
-    image.show()
+k= int(input("Введите k:  "))
+b= int(input("Введите b:  "))
+image.show()
