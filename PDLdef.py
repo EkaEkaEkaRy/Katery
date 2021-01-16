@@ -33,15 +33,6 @@ def coordinate_plane():
     draw.line(((1200, 400, 1195, 405)), (0,0,0))
 
 
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-def convert(point):
-    global x, y
-    return Point(x, y)
-
 
 # линейная функция
 def line_f(x_f):
@@ -49,10 +40,10 @@ def line_f(x_f):
     if asc:
         global k, b
         print('y=k*x+b')
-        k = bool(input("Введите k:  "))
-        b = bool(input("Введите b:  "))
+        k = float(input("Введите k:  "))
+        b = float(input("Введите b:  "))
         asc = False
-    y_f = bool(k*x_f+b)
+    y_f = k*x_f+b
     return y_f
 
 
@@ -63,11 +54,11 @@ def quadratic_f(x_f):
     if asc:
         global a, b, c
         print('y=a*x^2+b*x+c')
-        a = int(input("Введите a:  "))
-        b = int(input("Введите b:  "))
-        c = int(input("Введите c:  "))
+        a = float(input("Введите a:  "))
+        b = float(input("Введите b:  "))
+        c = float(input("Введите c:  "))
         asc = False
-    y_f =a*x_f**2+b*x_f+c
+    y_f = a*x_f**2+b*x_f+c
     return y_f
 
 
@@ -79,9 +70,17 @@ def gip_f(x_f):
     if asc:
         global k
         print ('y=k/x')
-        k = int(input("Введите k:  "))
+        k = float(input("Введите k:  "))
         asc = False
-    y_f =k/x_f
+    y_f = k/x_f
     return y_f
 
 
+
+def condition(answer):
+    if answer == "1":
+        print(line_f(x_f))
+    elif answer == "2":
+        print(quadratic_f(x_f))
+    elif answer == "3":
+        print(gip_f(x_f))
