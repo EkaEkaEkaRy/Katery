@@ -5,5 +5,5 @@ def line_f(x_f):
     y_f = k*x_f +b
     return y_f
 
-
+print(line_f(5))
 print(line_f(5))
