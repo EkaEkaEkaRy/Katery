@@ -1,4 +1,3 @@
-from PIL import ImageColor, Image, ImageDraw
 from random import randint
 
 
@@ -17,21 +16,6 @@ def color():
     g = randint(1,254)
     b = randint(1,254)
     return r, g, b
-
-
-image = Image.new("RGB", (1200, 800))  # создание изображения
-draw = ImageDraw.Draw(image)
-# координатная плоскость
-def coordinate_plane():
-    draw.rectangle((0, 0, 1200, 800), fill=ImageColor.getrgb("white"))  # белый экран
-    draw.line(((1200, 400, 1195, 405)), (0,0,0))
-    draw.line(((600, 0, 600, 800)), (0,0,0))
-    draw.line(((0, 400, 1200, 400)), (0,0,0))
-    draw.line(((595, 5, 600, 0)), (0,0,0))
-    draw.line(((600, 0, 605, 5)), (0,0,0))
-    draw.line(((1195, 395, 1200, 400)), (0,0,0))
-    draw.line(((1200, 400, 1195, 405)), (0,0,0))
-
 
 
 # линейная функция
