@@ -4,6 +4,7 @@ program =[]
 symbols = []
 string = []
 letter = False
+space = False
 
 for i in range(lines): # ввод сторок программы
     str = input('>>>\t')
@@ -16,7 +17,18 @@ for str in program: # берется одна строка
 
     for s in range(len(symbols)):
 
-        if letter:   # буквы в кавычках
+        if space:
+            if symbols[s] != ' ':
+                space = False
+                string.append(symbols[s])
+            else:
+                string.append(symbols[s])
+
+        elif s == 1 and symbols[0] == ' ':
+            space = True
+            string.append(symbols[s])
+
+        elif letter:   # буквы в кавычках
             if symbols[s] == '"' or symbols[s] == "'": # конец кавычек
                 letter = False
                 string.append(symbols[s])
