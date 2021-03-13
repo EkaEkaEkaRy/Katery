@@ -16,12 +16,23 @@ game = True
 while game:
     color = (r, g, b)
     events = pygame.event.get() # запрашиваем событие, произошедшее в игре
-
+"""
     for event in events: # берем события по одному
         if event.type == pygame.QUIT: # закрытие окна
             game = False
-    """
-    answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
+
+        if pygame.key.get_pressed()[pygame.K_SPACE]:
+            gamedisplay.fill((255, 255, 255))
+            pygame.draw.line(gamedisplay, (0, 0, 0), (1200, 400), (1195, 405), 2)
+            pygame.draw.line(gamedisplay, (0, 0, 0), (600, 0), (600, 800), 2)
+            pygame.draw.line(gamedisplay, (0, 0, 0), (0, 400), (1200, 400), 2)
+            pygame.draw.line(gamedisplay, (0, 0, 0), (595, 5), (600, 0), 2)
+            pygame.draw.line(gamedisplay, (0, 0, 0), (600, 0), (605, 5), 2)
+            pygame.draw.line(gamedisplay, (0, 0, 0), (1195, 395), (1200, 400), 2)
+            pygame.draw.line(gamedisplay, (0, 0, 0), (1200, 400), (1195, 405), 2)
+
+    
+    '''answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
 
     r = randint(0, 255)
     g = randint(0, 255)
@@ -30,13 +41,6 @@ while game:
     if answer == '1':
         print('y=k*x+b')
         k = float(input("Введите k:  "))
-        b = float(input("Введите b:  "))"""
+        b = float(input("Введите b:  "))'''
 
-    if pygame.key.get_pressed()[pygame.K_SPACE]:
-        pygame.draw.line(gamedisplay, (0, 0, 0), (1200, 400), (1195, 405), 2)
-        pygame.draw.line(gamedisplay, (0, 0, 0), (600, 0), (600, 800), 2)
-        pygame.draw.line(gamedisplay, (0, 0, 0), (0, 400), (1200, 400), 2)
-        pygame.draw.line(gamedisplay, (0, 0, 0), (595, 5), (600, 0), 2)
-        pygame.draw.line(gamedisplay, (0, 0, 0), (600, 0), (605, 5), 2)
-        pygame.draw.line(gamedisplay, (0, 0, 0), (1195, 395), (1200, 400), 2)
-        pygame.draw.line(gamedisplay, (0, 0, 0), (1200, 400), (1195, 405), 2)
+"""
