@@ -2,26 +2,26 @@ import pygame
 from random import randint
 pygame.init()
 gamedisplay = pygame.display.set_mode((1200,800)) # экран размером 800 на 600
-gamedisplay.fill((255,255,255)) # заливка экрана желтым
-# координатная плоскость
+pygame.display.set_caption("Параметрически заданные линии")
+gamedisplay.fill((255,255,255)) # заливка экрана белым
+
 N = 20
 
 r = 0
 g = 0
 b = 0
-color = (r,g,b)
 radius = 5
 
 game = True
 while game:
     color = (r, g, b)
     events = pygame.event.get() # запрашиваем событие, произошедшее в игре
-"""
+
     for event in events: # берем события по одному
         if event.type == pygame.QUIT: # закрытие окна
             game = False
 
-        if pygame.key.get_pressed()[pygame.K_SPACE]:
+        if pygame.key.get_pressed()[pygame.K_SPACE]:   # чистая координатная плоскость
             gamedisplay.fill((255, 255, 255))
             pygame.draw.line(gamedisplay, (0, 0, 0), (1200, 400), (1195, 405), 2)
             pygame.draw.line(gamedisplay, (0, 0, 0), (600, 0), (600, 800), 2)
@@ -42,5 +42,3 @@ while game:
         print('y=k*x+b')
         k = float(input("Введите k:  "))
         b = float(input("Введите b:  "))'''
-
-"""
