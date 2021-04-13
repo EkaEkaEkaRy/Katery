@@ -1,15 +1,4 @@
-from random import randint
 
-
-k = None
-b = None
-a = None
-c = None
-y_f = None
-y = None
-x_f = None
-x = None
-asc = True
 
 def color():
     r = randint(1,254)

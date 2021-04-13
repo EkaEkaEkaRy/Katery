@@ -5,14 +5,20 @@ gamedisplay = pygame.display.set_mode((1200,800)) # экран размером 
 pygame.display.set_caption("Параметрически заданные линии")
 gamedisplay.fill((255,255,255)) # заливка экрана белым
 
-r = 0
-g = 0
-b = 0
+red = 0
+green = 0
+blue = 0
+
 
 game = True
 while game:
+
+    x_begin = -600
+    x_end = 600
+    ox = 0
+
     N = 0
-    color = (r, g, b)
+    color = (red, green, blue)
     events = pygame.event.get() # запрашиваем событие, произошедшее в игре
 
     for event in events: # берем события по одному
@@ -21,6 +27,58 @@ while game:
 
         if pygame.key.get_pressed()[pygame.K_SPACE]:   # очистка экрана
             gamedisplay.fill((255, 255, 255))
+
+
+
+        if pygame.key.get_pressed()[pygame.K_1]:
+            answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
+            if answer == '1':
+                i = 1
+            elif answer == '2':
+                i = 2
+            if answer == '3':
+                i = 3
+
+            red = randint(0, 255)
+            green = randint(0, 255)
+            blue = randint(0, 255)
+            x = x_begin
+            if i == 1:
+                k = 1
+                b = 0
+                y = k * x + (b * 20)
+            elif i == 2:
+                a = 1
+                b = 0
+                c = 0
+                y = a * x ** 2 + b * x + c
+            elif i == 3:
+                a = 1
+                b = 0
+                c = 0
+                y = k / x
+            while x <= x_end:
+                ox2 = ox
+                ox += 0.1
+                x2 = x
+                y2 = y
+                x += 0.1
+                if i == 1:
+                    k = 1
+                    b = 0
+                    y = k * x + (b * 20)
+                elif i == 2:
+                    a = 1
+                    b = 0
+                    c = 0
+                    y = a * x ** 2 + b * x + c
+                elif i == 3:
+                    a = 1
+                    b = 0
+                    c = 0
+                    y = k / x
+                pygame.draw.line(gamedisplay, color, (ox2, 400 - y2), (ox, 400 - y), 2)
+
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:  # координатная плоскость
@@ -38,18 +96,13 @@ while game:
 
             if event.button == pygame.BUTTON_RIGHT: # клетка
                 while N <= 1200:
-                    pygame.draw.line(gamedisplay, (200, 200, 200), (N, 0), (N, 800), 1)
-                    pygame.draw.line(gamedisplay, (200, 200, 200), (0, N), (1200, N), 1)
+                    if N != 600:
+                        pygame.draw.line(gamedisplay, (200, 200, 200), (N, 0), (N, 800), 1)
+                    if N != 400:
+                        pygame.draw.line(gamedisplay, (200, 200, 200), (0, N), (1200, N), 1)
                     N += 20
 
-            if event.type == pygame.MOUSEWHEEL:
-                k = 1
-                b = 0
-                r = randint(0, 255)
-                g = randint(0, 255)
-                b = randint(0, 255)
-                pygame.draw.line(gamedisplay, color, (1200, k*(-600)+b*20), (0, k*600+b*20), 2)
-                print("1")
+
 
     """answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
 
