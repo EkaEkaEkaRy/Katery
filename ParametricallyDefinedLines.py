@@ -20,7 +20,7 @@ def find_y():
         a = 1
         b = 0
         c = 0
-        y = a * x ** 2 + b * x + c
+        y = (a / 20) * x ** 2 + b * x + (c * 20)
     elif i == 3:
         k = 10
         y = (400 * k) / x
