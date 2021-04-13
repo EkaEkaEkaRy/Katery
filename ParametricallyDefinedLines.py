@@ -8,6 +8,22 @@ gamedisplay.fill((255,255,255)) # заливка экрана белым
 red = 0
 green = 0
 blue = 0
+y = 0
+
+def find_y():
+    global y
+    if i == 1:
+        k = 1
+        b = 0
+        y = k * x + (b * 20)
+    elif i == 2:
+        a = 1
+        b = 0
+        c = 0
+        y = a * x ** 2 + b * x + c
+    elif i == 3:
+        k = 10
+        y = (400 * k) / x
 
 
 game = True
@@ -31,52 +47,27 @@ while game:
 
 
         if pygame.key.get_pressed()[pygame.K_1]:
-            answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
-            if answer == '1':
+            #answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
+            answer = randint(1, 3)
+            if answer == 1:
                 i = 1
-            elif answer == '2':
+            elif answer == 2:
                 i = 2
-            if answer == '3':
+            elif answer == 3:
                 i = 3
 
             red = randint(0, 255)
             green = randint(0, 255)
             blue = randint(0, 255)
             x = x_begin
-            if i == 1:
-                k = 1
-                b = 0
-                y = k * x + (b * 20)
-            elif i == 2:
-                a = 1
-                b = 0
-                c = 0
-                y = a * x ** 2 + b * x + c
-            elif i == 3:
-                a = 1
-                b = 0
-                c = 0
-                y = k / x
+            find_y()
             while x <= x_end:
                 ox2 = ox
                 ox += 0.1
                 x2 = x
                 y2 = y
                 x += 0.1
-                if i == 1:
-                    k = 1
-                    b = 0
-                    y = k * x + (b * 20)
-                elif i == 2:
-                    a = 1
-                    b = 0
-                    c = 0
-                    y = a * x ** 2 + b * x + c
-                elif i == 3:
-                    a = 1
-                    b = 0
-                    c = 0
-                    y = k / x
+                find_y()
                 pygame.draw.line(gamedisplay, color, (ox2, 400 - y2), (ox, 400 - y), 2)
 
 
