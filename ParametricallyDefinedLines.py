@@ -11,7 +11,9 @@ rule_4 = rule.render("Чтобы построить график, нажмите
 rule_5 = rule.render("Для продолжения нажмите ENTER", True, (255, 255, 255))
 
 gamedisplay = pygame.display.set_mode((1200,800)) # экран размером 800 на 600
+icone = pygame.image.load("PDL.png")
 pygame.display.set_caption("Параметрически заданные линии")
+pygame.display.set_icon(icone)
 
 gamedisplay.fill((0,0,0)) # заливка экрана белым
 gamedisplay.blit(rules_start, (400, 20))
