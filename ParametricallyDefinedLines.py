@@ -1,9 +1,25 @@
 import pygame
 from random import randint
 pygame.init()
+rule = pygame.font.SysFont('Ink Free', 50)  #название и размер шрифта
+rules_start = rule.render("ИНСТРУКЦИЯ",True, (255, 255, 255))
+rule = pygame.font.SysFont('Ink Free', 30)
+rule_1 = rule.render("Чтобы начертить оси координат, нажмите ЛЕВУЮ КНОПКУ МЫШКИ",True, (255, 255, 255))
+rule_2 = rule.render("Чтобы появилась клетка, нажмите ПРАВУЮ КНОПКУ МЫШКИ", True, (255, 255, 255))
+rule_3 = rule.render("Чтобы очистить экран, нажмите ENTER", True, (255, 255, 255))
+rule_4 = rule.render("Чтобы построить график, нажмите ПРОБЕЛ", True, (255, 255, 255))
+rule_5 = rule.render("Для продолжения нажмите ENTER", True, (255, 255, 255))
+
 gamedisplay = pygame.display.set_mode((1200,800)) # экран размером 800 на 600
 pygame.display.set_caption("Параметрически заданные линии")
-gamedisplay.fill((255,255,255)) # заливка экрана белым
+
+gamedisplay.fill((0,0,0)) # заливка экрана белым
+gamedisplay.blit(rules_start, (400, 20))
+gamedisplay.blit(rule_1, (20, 100))
+gamedisplay.blit(rule_2, (20, 150))
+gamedisplay.blit(rule_3, (20, 200))
+gamedisplay.blit(rule_4, (20, 250))
+gamedisplay.blit(rule_5, (20, 300))
 
 red = 0
 green = 0
@@ -11,18 +27,18 @@ blue = 0
 y = 0
 
 def find_y():
-    global y
+    global y, k, b, a, c
     if i == 1:
-        k = 1
-        b = 0
+        k = k
+        b = b
         y = k * x + (b * 20)
     elif i == 2:
-        a = 1
-        b = 0
-        c = 0
+        a = a
+        b = b
+        c = c
         y = (a / 20) * x ** 2 + b * x + (c * 20)
     elif i == 3:
-        k = 10
+        k = k
         y = (400 * k) / x
 
 
@@ -41,19 +57,27 @@ while game:
         if event.type == pygame.QUIT: # закрытие окна
             game = False
 
-        if pygame.key.get_pressed()[pygame.K_SPACE]:   # очистка экрана
+        if pygame.key.get_pressed()[pygame.K_KP_ENTER]:   # очистка экрана
             gamedisplay.fill((255, 255, 255))
 
 
 
-        if pygame.key.get_pressed()[pygame.K_1]:
-            #answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
-            answer = randint(1, 3)
-            if answer == 1:
+        if pygame.key.get_pressed()[pygame.K_SPACE]:
+            answer = input("(1)Линейная функция\n(2)Квадратичная функция\n(3)Обратная пропорциональность\n>>>\t")
+            if answer == "1":
+                print('y = k * x + b')
+                k = float(input('Введите k:\t'))
+                b = float(input('Введите b:\t'))
                 i = 1
-            elif answer == 2:
+            elif answer == "2":
+                print('y = a * x^2 + b * x + c')
+                a = float(input('Введите a:\t'))
+                b = float(input('Введите b:\t'))
+                c = float(input('Введите c:\t'))
                 i = 2
-            elif answer == 3:
+            elif answer == "3":
+                print('y = k / x')
+                k = float(input('Введите k:\t'))
                 i = 3
 
             red = randint(0, 255)
