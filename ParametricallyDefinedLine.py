@@ -1,6 +1,7 @@
 import pygame
 from random import randint
 pygame.init()
+
 rule = pygame.font.SysFont('Ink Free', 50)  #название и размер шрифта
 rules_start = rule.render("ИНСТРУКЦИЯ",True, (255, 255, 255))
 rule = pygame.font.SysFont('Ink Free', 30)
@@ -9,6 +10,7 @@ rule_2 = rule.render("Чтобы появилась клетка, нажмите
 rule_3 = rule.render("Чтобы очистить экран, нажмите ENTER", True, (255, 255, 255))
 rule_4 = rule.render("Чтобы построить график, нажмите ПРОБЕЛ", True, (255, 255, 255))
 rule_5 = rule.render("Для продолжения нажмите ENTER", True, (255, 255, 255))
+
 
 gamedisplay = pygame.display.set_mode((1200,800)) # экран размером 800 на 600
 pygame.display.set_caption("Параметрически заданные линии") # название
@@ -51,6 +53,7 @@ while game:
     for event in events: # берем события по одному
         if event.type == pygame.QUIT: # закрытие окна
             game = False
+
 
         if pygame.key.get_pressed()[pygame.K_KP_ENTER] or pygame.key.get_pressed()[pygame.K_RETURN]:   # очистка экрана
             gamedisplay.fill((255, 255, 255))
